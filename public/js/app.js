@@ -10,4 +10,18 @@ angular.module('chatSampleModule', [])
         body: 'わーいわーい'
       }
     ];
+  })
+  .controller('EditorBoxController', function($scope) {
+    var initMessage = function() {
+      return {
+        username: '',
+        body: ''
+      };
+    };
+
+    $scope.newMessage = initMessage();
+
+    $scope.addMessage = function() {
+      $scope.newMessage = initMessage();
+    };
   });

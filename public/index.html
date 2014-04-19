@@ -23,19 +23,29 @@
     </div>
   </article>
 </section>
-<footer class="editor-box">
-  <form class="container">
+<footer class="editor-box" ng-controller="EditorBoxController">
+  <form class="container" name="addMessageForm" ng-submit="addMessage()">
     <div class="row">
       <div class="col-sm-4">
-        <input type="text" class="form-control" placeholder="発言者">
+        <input type="text"
+               class="form-control"
+               placeholder="発言者"
+               ng-model="newMessage.username"
+               required>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-11">
-        <textarea class="form-control" rows="3" placeholder="発言内容"></textarea>
+        <textarea class="form-control"
+                  rows="3"
+                  placeholder="発言内容"
+                  ng-model="newMessage.body"
+                  required></textarea>
       </div>
       <div class="col-sm-1">
-        <button type="submit" class="btn btn-primary btn-lg">送信</button>
+        <button type="submit"
+                class="btn btn-primary btn-lg"
+                ng-disabled="!addMessageForm.$valid">送信</button>
       </div>
     </div>
   </form>
