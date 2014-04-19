@@ -19,3 +19,7 @@ exports.getMessages = function() {
   });
   return results;
 };
+
+exports.addMessage = function(message) {
+  messages.push(message);
+};

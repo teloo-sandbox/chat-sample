@@ -9,7 +9,7 @@ angular.module('chatSampleModule', [])
         throw new Error('メッセージリストの取得に失敗しました');
       });
   })
-  .controller('MessageEditorController', function($scope) {
+  .controller('MessageEditorController', function($scope, $http) {
     var initMessage = function() {
       return {
         username: '',
@@ -20,6 +20,13 @@ angular.module('chatSampleModule', [])
     $scope.newMessage = initMessage();
 
     $scope.addMessage = function() {
-      $scope.newMessage = initMessage();
+      $http
+        .post('api/messages', $scope.newMessage)
+        .success(function(data, status, headers, config) {
+          $scope.newMessage = initMessage();
+        })
+        .error(function(data, status, headers, config) {
+          throw new Error('メッセージの送信に失敗しました');
+        });
     };
   });
