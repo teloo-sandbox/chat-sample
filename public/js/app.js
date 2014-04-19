@@ -11,7 +11,7 @@ angular.module('chatSampleModule', [])
       }
     ];
   })
-  .controller('EditorBoxController', function($scope) {
+  .controller('MessageEditorController', function($scope) {
     var initMessage = function() {
       return {
         username: '',
