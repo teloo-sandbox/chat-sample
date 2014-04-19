@@ -7,7 +7,7 @@
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/app.css" rel="stylesheet">
 </head>
-<body>
+<body ng-app="chatSampleModule">
 <header>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -15,17 +15,11 @@
     </div>
   </nav>
 </header>
-<section class="container">
-  <article class="media">
+<section class="container" ng-controller="MessageListController">
+  <article class="media" ng-repeat="message in messages">
     <div class="media-body">
-      <h4 class="media-heading">Teloo1</h4>
-      AngularJS と Socket.IO の練習のためにチャットアプリを作るよ！
-    </div>
-  </article>
-  <article class="media">
-    <div class="media-body">
-      <h4 class="media-heading">Teloo2</h4>
-      わーいわーい
+      <h4 class="media-heading">{{message.username}}</h4>
+      {{message.body}}
     </div>
   </article>
 </section>
@@ -46,5 +40,7 @@
     </div>
   </form>
 </footer>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
