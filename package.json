@@ -4,6 +4,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "4.0.0",
+    "express-resource": "1.0.0",
     "errorhandler": "1.0.0"
   },
   "scripts": {

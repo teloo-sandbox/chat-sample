@@ -1,15 +1,13 @@
 angular.module('chatSampleModule', [])
-  .controller('MessageListController', function($scope) {
-    $scope.messages = [
-      {
-        username: 'Teloo1',
-        body: 'AngularJS と Socket.IO の練習のためにチャットアプリを作るよ！'
-      },
-      {
-        username: 'Teloo2',
-        body: 'わーいわーい'
-      }
-    ];
+  .controller('MessageListController', function($scope, $http) {
+    $http
+      .get('api/messages')
+      .success(function(data, status, headers, config) {
+        $scope.messages = data;
+      })
+      .error(function(data, status, headers, config) {
+        throw new Error('メッセージリストの取得に失敗しました');
+      });
   })
   .controller('MessageEditorController', function($scope) {
     var initMessage = function() {
