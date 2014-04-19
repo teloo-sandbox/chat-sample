@@ -3,9 +3,48 @@
 <head>
   <meta chatset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>chat sample</title>
+  <title>Chat Sample</title>
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
 </head>
 <body>
-Hello World!
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <span class="navbar-brand">Chat Sample</span>
+    </div>
+  </nav>
+</header>
+<section class="container">
+  <article class="media">
+    <div class="media-body">
+      <h4 class="media-heading">Teloo1</h4>
+      AngularJS と Socket.IO の練習のためにチャットアプリを作るよ！
+    </div>
+  </article>
+  <article class="media">
+    <div class="media-body">
+      <h4 class="media-heading">Teloo2</h4>
+      わーいわーい
+    </div>
+  </article>
+</section>
+<footer class="editor-box">
+  <form class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="発言者">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-11">
+        <textarea class="form-control" rows="3" placeholder="発言内容"></textarea>
+      </div>
+      <div class="col-sm-1">
+        <button type="submit" class="btn btn-primary btn-lg">送信</button>
+      </div>
+    </div>
+  </form>
+</footer>
 </body>
 </html>
