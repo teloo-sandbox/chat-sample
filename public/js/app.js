@@ -58,7 +58,7 @@ angular.module('chatSampleModule', [])
       });
     });
   })
-  .controller('MessageEditorController', function($scope, $http, MessageManager, ScrollManager) {
+  .controller('MessageEditorController', function($scope, $http, $timeout, MessageManager, ScrollManager) {
     var initMessage = function() {
       return {
         username: '',
@@ -74,7 +74,9 @@ angular.module('chatSampleModule', [])
           throw err;
         }
         $scope.newMessage = initMessage();
-        ScrollManager.scrollToBottom();
+        $timeout(function() {
+          ScrollManager.scrollToBottom();
+        });
       });
     };
   });
