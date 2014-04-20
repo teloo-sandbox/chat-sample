@@ -46,6 +46,9 @@ angular.module('chatSampleModule', [])
     MessageManager.onAddMessage(function(message) {
       $scope.$apply(function() {
         $scope.messages.push(message);
+        $timeout(function() {
+          ScrollManager.scrollToBottom();
+        });
       });
     });
     MessageManager.getMessages(function(err, messages) {
@@ -74,9 +77,6 @@ angular.module('chatSampleModule', [])
           throw err;
         }
         $scope.newMessage = initMessage();
-        $timeout(function() {
-          ScrollManager.scrollToBottom();
-        });
       });
     };
   });
