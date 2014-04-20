@@ -37,7 +37,9 @@ angular.module('chatSampleModule', [])
   })
   .controller('MessageListController', function($scope, $http, MessageManager) {
     MessageManager.onAddMessage(function(message) {
-      $scope.messages.push(message);
+      $scope.$apply(function() {
+        $scope.messages.push(message);
+      });
     });
     MessageManager.getMessages(function(err, messages) {
       if (err) {
