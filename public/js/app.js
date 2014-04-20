@@ -42,7 +42,7 @@ angular.module('chatSampleModule', [])
       }
     };
   })
-  .controller('MessageListController', function($scope, $http, MessageManager) {
+  .controller('MessageListController', function($scope, $http, $timeout, MessageManager, ScrollManager) {
     MessageManager.onAddMessage(function(message) {
       $scope.$apply(function() {
         $scope.messages.push(message);
@@ -53,6 +53,9 @@ angular.module('chatSampleModule', [])
         throw err;
       }
       $scope.messages = messages;
+      $timeout(function() {
+        ScrollManager.scrollToBottom();
+      });
     });
   })
   .controller('MessageEditorController', function($scope, $http, MessageManager, ScrollManager) {
