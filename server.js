@@ -9,6 +9,7 @@ var io = require('socket.io')(server);
 var port = 3000;
 
 io.on('connect', function(socket) {
+  // TODO メモリリーク
   messageMgr.onAddMessage(function(message) {
     socket.emit('newMessage', message);
   });
