@@ -1,4 +1,11 @@
 angular.module('chatSampleModule', [])
+  .factory('ScrollManager', function() {
+    return {
+      scrollToBottom: function() {
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+    };
+  })
   .factory("MessageManager", function($http) {
     var onAddMessageCallback = function(message) {};
 
@@ -48,7 +55,7 @@ angular.module('chatSampleModule', [])
       $scope.messages = messages;
     });
   })
-  .controller('MessageEditorController', function($scope, $http, MessageManager) {
+  .controller('MessageEditorController', function($scope, $http, MessageManager, ScrollManager) {
     var initMessage = function() {
       return {
         username: '',
@@ -64,6 +71,7 @@ angular.module('chatSampleModule', [])
           throw err;
         }
         $scope.newMessage = initMessage();
+        ScrollManager.scrollToBottom();
       });
     };
   });
