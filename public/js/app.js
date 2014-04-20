@@ -6,7 +6,7 @@ angular.module('chatSampleModule', [])
       }
     };
   })
-  .factory("MessageManager", function($http) {
+  .factory('MessageManager', function($http) {
     var onAddMessageCallback = function(message) {};
 
     // TODO このままだと localhost からしかアクセスできない 
