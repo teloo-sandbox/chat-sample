@@ -1,6 +1,18 @@
 angular.module('chatSampleModule', [])
   .factory("MessageManager", function($http) {
+    var onAddMessageCallback = function(message) {};
+
+    // TODO このままだと localhost からしかアクセスできない 
+    var socket = io('http://localhost:3000');
+    socket.on('connect', function() {
+      socket.on('newMessage', onAddMessageCallback);
+    });
+
     return {
+      onAddMessage: function(callback) {
+        // TODO 複数のコールバックを保持できるようにする
+        onAddMessageCallback = callback;
+      },
       getMessages: function(callback) {
         $http
           .get('api/messages')
@@ -24,6 +36,9 @@ angular.module('chatSampleModule', [])
     };
   })
   .controller('MessageListController', function($scope, $http, MessageManager) {
+    MessageManager.onAddMessage(function(message) {
+      $scope.messages.push(message);
+    });
     MessageManager.getMessages(function(err, messages) {
       if (err) {
         throw err;

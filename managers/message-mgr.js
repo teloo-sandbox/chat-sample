@@ -1,3 +1,6 @@
+var EventEmitter = new require('events').EventEmitter;
+var ev = new EventEmitter();
+
 var messages = [
   {
     username: 'Teloo1',
@@ -22,4 +25,11 @@ exports.getMessages = function() {
 
 exports.addMessage = function(message) {
   messages.push(message);
+  ev.emit('addMessage', message);
+};
+
+exports.onAddMessage = function(callback) {
+  ev.on('addMessage', function(message) {
+    callback(message);
+  });
 };
